@@ -122,10 +122,12 @@ const signelCampaign = async (req, res) => {
 };
 const homeCampaign = async (req, res) => {
   try {
-    const data = await Campaign.find({}).limit(6).exec();
-    const activeData = data.filter(
-      (campaign) => new Date(campaign.deadline) > new Date()
-    );
+    // const data = await Campaign.find({}).limit(6).exec();
+    const activeData = await Campaign.find({
+      deadline: { $gt: new Date() },
+    })
+      .limit(6)
+      .exec();
 
     return res.status(200).json({
       status: true,
