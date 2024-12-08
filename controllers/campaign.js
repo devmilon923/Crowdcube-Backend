@@ -11,7 +11,7 @@ const allCampaign = async (req, res, next) => {
   } catch (error) {
     res.status(500).json({
       status: false,
-      message: "Unknown error",
+      message: error,
     });
   }
 };
@@ -19,7 +19,7 @@ const allCampaign = async (req, res, next) => {
 const addCampaign = async (req, res) => {
   console.log(req.body);
   try {
-   const data= await Campaign.create({
+    const data = await Campaign.create({
       campaign_title: req.body.title,
       campaign_type: req.body.campaign_type,
       description: req.body.description,
