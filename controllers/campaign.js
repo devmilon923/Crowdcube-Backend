@@ -17,7 +17,7 @@ const allCampaign = async (req, res, next) => {
 };
 
 const addCampaign = async (req, res) => {
-  console.log(req.body);
+ 
   try {
     const data = await Campaign.create({
       campaign_title: req.body.title,
@@ -38,7 +38,7 @@ const addCampaign = async (req, res) => {
   //   res.send("working...");
 };
 const myCampaign = async (req, res) => {
-  console.log(req.body.uid);
+ 
   // { uid: 'YzMMKdPuxKSIaNVrj4dGFCsSmef2' }
   try {
     const data = await Campaign.find({ user_uid: req.body.uid }).exec();
@@ -142,7 +142,7 @@ const homeCampaign = async (req, res) => {
   }
 };
 const addDonation = async (req, res, next) => {
-  // console.log(req.body);
+ 
   try {
     const addHistory = DonationHistory.create({
       campaign_id: req.body.campaign_id,
@@ -179,7 +179,7 @@ const addDonation = async (req, res, next) => {
   }
 };
 const myDonation = async (req, res) => {
-  console.log(req.body.uid);
+
   try {
     const data = await DonationHistory.find({ user_uid: req.body.uid }).sort({
       createdAt: -1,
