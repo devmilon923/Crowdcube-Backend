@@ -7,9 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 mongoose
-  .connect(
-    "mongodb+srv://test:Test%40111@cluster0.dui2k.mongodb.net/Crowdcube?retryWrites=true&w=majority&appName=Cluster0"
-  )
+  .connect(process.env.MONGODBURI)
   .then(() => console.log("Database active now"))
   .catch((err) => console.log(err));
 
